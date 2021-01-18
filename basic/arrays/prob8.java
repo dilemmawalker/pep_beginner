@@ -15,12 +15,20 @@ public class prob8{
         int[]arr=new int[Math.max(n1,n2)];
         n1--;
         n2--;
+        int c=0;
         for(int i=arr.length-1;i>=0;i--){
-           
-            arr[i]+=n1>=0?arr1[n1--]:0;//also use a carry
-            arr[i]+=n2>=0?arr2[n2--]:0;
+            int sum=0;
+            sum+=n1>=0?arr1[n1--]:0;
+            sum+=n2>=0?arr2[n2--]:0;
+            sum+=c;
+
+            c=sum/10;
+            sum%=10;
+            arr[i]=sum;
             
         }
+        if(c!=0)
+        System.out.println(c);
         for(int i=0;i<=arr.length-1;i++){
            System.out.println(arr[i]);
         }
